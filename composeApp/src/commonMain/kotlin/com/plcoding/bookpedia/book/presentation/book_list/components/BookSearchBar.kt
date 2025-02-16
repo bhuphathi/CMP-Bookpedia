@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -68,12 +69,18 @@ fun BookSearchBar(
                 keyboardType = KeyboardType.Text, imeAction = ImeAction.Search
             ),
             trailingIcon = {
-                AnimatedVisibility(visible = searchQuery.isNotEmpty()) {
-                    Icon(
-                        imageVector = Icons.Default.Close,
-                        contentDescription = stringResource(Res.string.clear_search),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
+                AnimatedVisibility(
+                    visible = searchQuery.isNotBlank()
+                ) {
+                    IconButton(
+                        onClick = { onSearchQueryChange("") },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = stringResource(Res.string.clear_search),
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 }
             },
             modifier = modifier.background(shape = RoundedCornerShape(100), color = DesertWhite)
