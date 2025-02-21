@@ -42,6 +42,9 @@ import com.plcoding.bookpedia.core.presentation.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=3725](https://youtu.be/WT9-4DXUqsM?t=3725)
+ */
 @Composable
 fun BookListItem(
     book: Book,

@@ -10,6 +10,9 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=7482](https://youtu.be/WT9-4DXUqsM?t=7482)
+ */
 suspend inline fun <reified T> safeCall(
     execute: () -> HttpResponse
 ): Result<T, DataError.Remote> {
@@ -28,6 +31,9 @@ suspend inline fun <reified T> safeCall(
     return responseToResult(response)
 }
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=7482](https://youtu.be/WT9-4DXUqsM?t=7482)
+ */
 suspend inline fun <reified T> responseToResult(
     response: HttpResponse
 ): Result<T, DataError.Remote> {

@@ -46,6 +46,10 @@ import com.plcoding.bookpedia.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=2156](https://youtu.be/WT9-4DXUqsM?t=2156)
+ * [https://youtu.be/WT9-4DXUqsM?t=3459](https://youtu.be/WT9-4DXUqsM?t=3459)
+ */
 @Composable
 fun BookListScreenRoot(
     viewModel: BookListViewModel = koinViewModel(),
@@ -61,6 +65,9 @@ fun BookListScreenRoot(
     })
 }
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=2156](https://youtu.be/WT9-4DXUqsM?t=2156)
+ */
 @Composable
 private fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
     val keyboardController = LocalSoftwareKeyboardController.current

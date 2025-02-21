@@ -1,5 +1,8 @@
 package com.plcoding.bookpedia.book.domain
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=1335](https://youtu.be/WT9-4DXUqsM?t=1335)
+ */
 data class Book(
     val id: String,
     val title: String,

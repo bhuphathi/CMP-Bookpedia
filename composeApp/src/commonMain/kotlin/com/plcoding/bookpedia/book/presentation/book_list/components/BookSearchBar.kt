@@ -29,6 +29,9 @@ import com.plcoding.bookpedia.core.presentation.DesertWhite
 import com.plcoding.bookpedia.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 
+/**
+ * [https://youtu.be/WT9-4DXUqsM?t=2440](https://youtu.be/WT9-4DXUqsM?t=2440)
+ */
 @Composable
 fun BookSearchBar(
     searchQuery: String,
