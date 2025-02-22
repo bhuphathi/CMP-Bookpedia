@@ -4,7 +4,9 @@ import com.plcoding.bookpedia.book.data.dto.SearchedBookDto
 import com.plcoding.bookpedia.book.domain.Book
 
 /**
+ * [https://youtu.be/WT9-4DXUqsM?t=8369](https://youtu.be/WT9-4DXUqsM?t=8369)
  * [https://youtu.be/WT9-4DXUqsM?t=8397](https://youtu.be/WT9-4DXUqsM?t=8397)
+ * data model to domain model
  */
 fun SearchedBookDto.toBook(): Book {
     return Book(

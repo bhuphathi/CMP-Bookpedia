@@ -34,6 +34,7 @@ class BookListViewModel(
     private var searchJob: Job? = null
 
     private val _state = MutableStateFlow(BookListState())
+//    val state = _state = _state.asStateFlow()
 
     /**
      * [https://youtu.be/WT9-4DXUqsM?t=9407](https://youtu.be/WT9-4DXUqsM?t=9407)
@@ -95,6 +96,9 @@ class BookListViewModel(
             .launchIn(viewModelScope)
     }
 
+    /**
+     * [https://youtu.be/WT9-4DXUqsM?t=8955](https://youtu.be/WT9-4DXUqsM?t=8955)
+     */
     private fun searchBooks(query: String) = viewModelScope.launch {
         _state.update { it ->
             it.copy(
