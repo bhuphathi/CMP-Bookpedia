@@ -69,7 +69,7 @@ fun BookListScreenRoot(
  * [https://youtu.be/WT9-4DXUqsM?t=2156](https://youtu.be/WT9-4DXUqsM?t=2156)
  */
 @Composable
-private fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
+fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val pagerState = rememberPagerState { 2 }
     val searchResultsListState = rememberLazyListState()
