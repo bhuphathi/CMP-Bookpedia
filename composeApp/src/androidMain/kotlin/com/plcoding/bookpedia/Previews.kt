@@ -17,7 +17,7 @@ private fun BookSearchBarPreview() {
         Box(
             modifier = Modifier.background(color = Color.White)
         ) {
-            App(engine = remember { OkHttp.create() })
+            App()
         }
     }
 }
