@@ -56,13 +56,15 @@ fun BookListScreenRoot(
     onBookClick: (Book) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    BookListScreen(state = state, onAction = { action ->
-        when (action) {
-            is BookListAction.OnBookClick -> onBookClick(action.book)
-            else -> Unit
-        }
-        viewModel.onAction(action)
-    })
+    BookListScreen(
+        state = state,
+        onAction = { action ->
+            when (action) {
+                is BookListAction.OnBookClick -> onBookClick(action.book)
+                else -> Unit
+            }
+            viewModel.onAction(action)
+        })
 }
 
 /**
@@ -75,15 +77,15 @@ fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
     val searchResultsListState = rememberLazyListState()
     val favoriteBooksListState = rememberLazyListState()
 
-    LaunchedEffect(state.searchResults){
+    LaunchedEffect(state.searchResults) {
         searchResultsListState.animateScrollToItem(0)
     }
 
-    LaunchedEffect(state.selectedTabIndex){
+    LaunchedEffect(state.selectedTabIndex) {
         pagerState.animateScrollToPage(state.selectedTabIndex)
     }
 
-    LaunchedEffect(pagerState.currentPage){
+    LaunchedEffect(pagerState.currentPage) {
         onAction(BookListAction.OnTabSelected(pagerState.currentPage))
     }
 
@@ -152,13 +154,13 @@ fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
-                    ){
+                    ) {
                         when (pageIndex) {
                             0 -> {
-                                if(state.isLoading){
+                                if (state.isLoading) {
                                     CircularProgressIndicator()
                                 } else {
-                                    when{
+                                    when {
                                         state.errorMessage != null -> {
                                             Text(
                                                 text = state.errorMessage.asString(),
@@ -167,7 +169,8 @@ fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
                                                 color = MaterialTheme.colorScheme.error
                                             )
                                         }
-                                        state.searchResults.isEmpty()  -> {
+
+                                        state.searchResults.isEmpty() -> {
                                             Text(
                                                 text = stringResource(Res.string.no_books_on_search),
                                                 textAlign = TextAlign.Center,
@@ -175,10 +178,17 @@ fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
                                                 color = MaterialTheme.colorScheme.error
                                             )
                                         }
+
                                         else -> {
                                             BookList(
                                                 books = state.searchResults,
-                                                onBookClick = { onAction(BookListAction.OnBookClick(it)) },
+                                                onBookClick = {
+                                                    onAction(
+                                                        BookListAction.OnBookClick(
+                                                            it
+                                                        )
+                                                    )
+                                                },
                                                 scrollState = searchResultsListState,
                                             )
                                         }
@@ -186,16 +196,16 @@ fun BookListScreen(state: BookListState, onAction: (BookListAction) -> Unit) {
                                     }
                                 }
                             }
+
                             1 -> {
-                                if(state.favoriteBooks.isEmpty()) {
+                                if (state.favoriteBooks.isEmpty()) {
                                     Text(
                                         text = stringResource(Res.string.no_favorite_books),
                                         textAlign = TextAlign.Center,
                                         style = MaterialTheme.typography.headlineSmall,
 //                                        color = MaterialTheme.colorScheme.error
                                     )
-                                }
-                                else {
+                                } else {
                                     BookList(
                                         books = state.favoriteBooks,
                                         onBookClick = { onAction(BookListAction.OnBookClick(it)) },
