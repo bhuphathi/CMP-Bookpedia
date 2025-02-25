@@ -1,4 +1,3 @@
-@file:OptIn(FlowPreview::class)
 
 package com.plcoding.bookpedia.book.presentation.book_list
 
@@ -70,6 +69,7 @@ class BookListViewModel(
     /**
      * [https://youtu.be/WT9-4DXUqsM?t=8759](https://youtu.be/WT9-4DXUqsM?t=8759)
      */
+    @OptIn(FlowPreview::class)
     private fun observeSearchQuery() {
         state
             .map { it.searchQuery }
